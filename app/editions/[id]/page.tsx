@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
-import { ArrowLeft, Play, X, Heart, MessageCircle, Phone, Globe } from 'lucide-react'
+import { ArrowLeft, Play, X, Heart, MessageCircle, Phone, Globe, Menu } from 'lucide-react'
 
 // Image arrays (shared with main page)
 const firstEditionImages = [
@@ -75,6 +75,11 @@ const editionsData = {
   }
 }
 
+const nav = [['Accueil', 'accueil'], ['Notre histoire', 'histoire'], ['Nos éditions', 'editions'], ['Nos actions', 'actions'], ['Nous rejoindre', 'rejoindre']]
+
+function Logo() { return <div className="logo" aria-label="EPA Fondation"><img src="/epa-logo.jpeg" alt="EPA Fondation" /></div> }
+function HeaderButton({ children, outline = false, href = "#rejoindre" }: { children: React.ReactNode; outline?: boolean; href?: string }) { return <a className={`btn ${outline ? 'btn-outline' : ''}`} href={href}>{children}</a> }
+
 export default function EditionDetailPage() {
   const params = useParams()
   const router = useRouter()
@@ -84,6 +89,10 @@ export default function EditionDetailPage() {
 
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
   const [playingVideo, setPlayingVideo] = useState(false)
+  const [menu, setMenu] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => { const onScroll = () => setScrolled(window.scrollY > 30); window.addEventListener('scroll', onScroll); return () => window.removeEventListener('scroll', onScroll) }, [])
 
   if (!edition) {
     return (
@@ -99,57 +108,22 @@ export default function EditionDetailPage() {
   return (
     <main className="min-h-screen bg-white text-[#0b0b0a] pb-16">
       {/* Top Bar / Navigation */}
-      <header
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          height: '76px',
-          padding: '0 clamp(24px, 6vw, 92px)',
-          borderBottom: '1px solid rgba(179,134,27,0.15)',
-          background: 'rgba(255, 255, 255, 0.8)',
-          backdropFilter: 'blur(14px)',
-          position: 'sticky',
-          top: 0,
-          zIndex: 10
-        }}
-      >
-        <button
-          onClick={() => router.push('/')}
-          style={{
-            background: 'none',
-            border: 'none',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            cursor: 'pointer',
-            fontSize: '11px',
-            fontWeight: 'bold',
-            textTransform: 'uppercase',
-            color: '#b3861b'
-          }}
-        >
-          <ArrowLeft size={16} /> Accueil
+      <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
+        <Logo />
+        <nav>{nav.map(([label, id]) => <a key={id} href={id === 'accueil' ? '/' : `/#${id}`}>{label}</a>)}</nav>
+        <HeaderButton href="/links">Nous rejoindre</HeaderButton>
+        <button className="menu-toggle" onClick={() => setMenu(!menu)} aria-label={menu ? 'Fermer le menu' : 'Ouvrir le menu'}>
+          {menu ? <X /> : <Menu />}
         </button>
-        <div style={{ width: '60px', height: '40px', overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
-          <img src="/epa-logo.jpeg" alt="EPA Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
-        </div>
-        <a
-          href="/links"
-          style={{
-            padding: '8px 16px',
-            background: '#b3861b',
-            color: '#ffffff',
-            borderRadius: '6px',
-            fontSize: '10px',
-            fontWeight: 'bold',
-            textTransform: 'uppercase',
-            textDecoration: 'none'
-          }}
-        >
-          Rejoindre
-        </a>
       </header>
+      {menu && (
+        <div className="mobile-menu">
+          {nav.map(([label, id]) => (
+            <a key={id} href={id === 'accueil' ? '/' : `/#${id}`} onClick={() => setMenu(false)}>{label}</a>
+          ))}
+          <HeaderButton href="/links">Nous rejoindre</HeaderButton>
+        </div>
+      )}
 
       {/* Hero Banner */}
       <section

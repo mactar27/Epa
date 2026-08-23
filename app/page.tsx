@@ -83,8 +83,8 @@ export default function Page() {
   }, [])
 
   return <main>
-    <header className={`site-header ${scrolled ? 'scrolled' : ''}`}><Logo /><nav>{nav.map(([label, id]) => <a key={id} href={`#${id}`}>{label}</a>)}</nav><Button>Faire un don <Heart size={13} /></Button><button className="menu-toggle" onClick={() => setMenu(!menu)} aria-label={menu ? 'Fermer le menu' : 'Ouvrir le menu'}>{menu ? <X /> : <Menu />}</button></header>
-    {menu && <div className="mobile-menu">{nav.map(([label, id]) => <a key={id} href={`#${id}`} onClick={() => setMenu(false)}>{label}</a>)}<Button>Faire un don</Button></div>}
+    <header className={`site-header ${scrolled ? 'scrolled' : ''}`}><Logo /><nav>{nav.map(([label, id]) => <a key={id} href={id === 'accueil' ? '/' : `/#${id}`}>{label}</a>)}</nav><Button>Faire un don <Heart size={13} /></Button><button className="menu-toggle" onClick={() => setMenu(!menu)} aria-label={menu ? 'Fermer le menu' : 'Ouvrir le menu'}>{menu ? <X /> : <Menu />}</button></header>
+    {menu && <div className="mobile-menu">{nav.map(([label, id]) => <a key={id} href={id === 'accueil' ? '/' : `/#${id}`} onClick={() => setMenu(false)}>{label}</a>)}<Button>Faire un don</Button></div>}
 
     <section id="accueil" className="hero" style={{ backgroundImage: `linear-gradient(90deg,rgba(5,5,4,.92) 0%,rgba(5,5,4,.5) 48%,rgba(5,5,4,.35)), url('${heroImage}')` }}><div className="hero-shade" /><div className="hero-content"><p className="eyebrow">EPA — ENSEMBLE POUR L'AVENIR</p><h1>Ensemble<br /><em>pour l'avenir.</em></h1><p className="hero-copy">Unis pour l'espoir, la solidarité<br />et le changement.<br /><span style={{ color: 'var(--gold-soft)', fontSize: '15px', display: 'block', marginTop: '10px', fontStyle: 'italic' }}>« Le don de soi pour un avenir meilleur »</span></p><div className="hero-actions"><Button href="#actions">Découvrir nos actions</Button><Button outline href="#editions">Voir nos éditions <Play size={12} fill="currentColor" /></Button></div></div><a href="#histoire" className="scroll-cue">Découvrir EPA <ChevronDown size={18} /></a></section>
 
