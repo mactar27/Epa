@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useRef, useEffect } from 'react'
-import { MessageSquare, X, Send, Heart, Copy, MessageCircle, Phone, Instagram, HelpCircle } from 'lucide-react'
+import { MessageSquare, X, Send, Heart, Copy, MessageCircle, Phone, HelpCircle } from 'lucide-react'
 
 interface Message {
   sender: 'bot' | 'user'
@@ -314,7 +314,11 @@ export default function Chatbot() {
                           textDecoration: 'none',
                         }}
                       >
-                        <Instagram size={14} /> Nous suivre sur Instagram
+                        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg> Nous suivre sur Instagram
                       </a>
                     </div>
                   )}
