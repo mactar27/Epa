@@ -73,6 +73,17 @@ export default function Page() {
   const [scrolled, setScrolled] = useState(false)
   const [playingVideo, setPlayingVideo] = useState(false)
   const [qrCodeUrl, setQrCodeUrl] = useState('')
+  const [showSplash, setShowSplash] = useState(true)
+  const [fadeOut, setFadeOut] = useState(false)
+
+  useEffect(() => {
+    const timerFade = setTimeout(() => setFadeOut(true), 1000)
+    const timerRemove = setTimeout(() => setShowSplash(false), 1600)
+    return () => {
+      clearTimeout(timerFade)
+      clearTimeout(timerRemove)
+    }
+  }, [])
 
   useEffect(() => { const onScroll = () => setScrolled(window.scrollY > 30); window.addEventListener('scroll', onScroll); return () => window.removeEventListener('scroll', onScroll) }, [])
 
@@ -83,6 +94,11 @@ export default function Page() {
   }, [])
 
   return <main>
+    {showSplash && (
+      <div className={`splash-screen ${fadeOut ? 'fade-out' : ''}`}>
+        <img src="/epa-logo.jpeg" alt="EPA Logo" className="splash-logo" />
+      </div>
+    )}
     <header className={`site-header ${scrolled ? 'scrolled' : ''}`}><Logo /><nav>{nav.map(([label, id]) => <a key={id} href={id === 'accueil' ? '/' : `/#${id}`}>{label}</a>)}</nav><Button>Faire un don <Heart size={13} /></Button><button className="menu-toggle" onClick={() => setMenu(!menu)} aria-label={menu ? 'Fermer le menu' : 'Ouvrir le menu'}>{menu ? <X /> : <Menu />}</button></header>
     {menu && <div className="mobile-menu">{nav.map(([label, id]) => <a key={id} href={id === 'accueil' ? '/' : `/#${id}`} onClick={() => setMenu(false)}>{label}</a>)}<Button>Faire un don</Button></div>}
 
