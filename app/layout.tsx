@@ -6,11 +6,16 @@ export const metadata: Metadata = {
   title: 'EPA Fondation — Ensemble pour l’avenir',
   description: 'EPA Fondation accompagne, soutient et valorise la jeunesse pour bâtir un avenir meilleur.',
   generator: 'v0.app',
+  icons: {
+    icon: '/epa-logo.jpeg',
+    shortcut: '/epa-logo.jpeg',
+    apple: '/epa-logo.jpeg',
+  }
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'dark',
-  themeColor: '#0b0b0a',
+  colorScheme: 'light',
+  themeColor: '#ffffff',
   width: 'device-width',
   initialScale: 1,
 }
