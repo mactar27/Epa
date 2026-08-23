@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'EPA Fondation — Ensemble pour l’avenir',
   description: 'EPA Fondation accompagne, soutient et valorise la jeunesse pour bâtir un avenir meilleur.',
   generator: 'v0.app',
+  manifest: '/manifest.json',
   icons: {
     icon: '/epa-logo.jpeg',
     shortcut: '/epa-logo.jpeg',

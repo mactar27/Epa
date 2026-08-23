@@ -1,0 +1,21 @@
+{
+  "name": "EPA Fondation",
+  "short_name": "EPA",
+  "description": "EPA Fondation accompagne, soutient et valorise la jeunesse pour bâtir un avenir meilleur.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/epa-logo.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/epa-logo.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
