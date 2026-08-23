@@ -71,8 +71,11 @@ export default function LinksPage() {
 
         {/* Title */}
         <h1 style={{ fontSize: '24px', fontWeight: 'bold', margin: '0 0 4px', fontFamily: 'Georgia, serif', color: '#0b0b0a' }}>EPA Fondation</h1>
-        <p style={{ color: '#b3861b', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 32px', fontWeight: 'bold' }}>
-          Ensemble pour l'avenir
+        <p style={{ color: '#b3861b', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 32px', fontWeight: 'bold', lineHeight: '1.4' }}>
+          Ensemble pour l'avenir<br />
+          <span style={{ fontSize: '10px', textTransform: 'none', fontStyle: 'italic', opacity: 0.8, letterSpacing: 'normal' }}>
+            « Le don de soi pour un avenir meilleur »
+          </span>
         </p>
 
         {/* Links Grid */}

@@ -11,7 +11,7 @@ const mobileReference = '/1446323d-a9d4-46c4-bf1d-1c2728fa5921.JPG'
 const joinBackground = '/328e4581-c264-47db-bff8-8bc1b6cbff56.JPG'
 const videoSource = '/8f4e66e4-9a44-4dad-a773-83da81133836.MP4'
 
-const nav = [['Accueil', 'accueil'], ['Notre histoire', 'histoire'], ['Nos éditions', 'editions'], ['Nos actions', 'actions'], ['Galerie', 'galerie'], ['Nous rejoindre', 'rejoindre']]
+const nav = [['Accueil', 'accueil'], ['Notre histoire', 'histoire'], ['Nos éditions', 'editions'], ['Nos actions', 'actions'], ['Nous rejoindre', 'rejoindre']]
 
 const firstEditionImages = [
   '/1ere-edition/4c2c4575-98a8-4cfe-983d-47759f26599e.JPG',
@@ -72,10 +72,7 @@ export default function Page() {
   const [menu, setMenu] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [playingVideo, setPlayingVideo] = useState(false)
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
   const [qrCodeUrl, setQrCodeUrl] = useState('')
-  const [activeTab, setActiveTab] = useState<'all' | '1ere' | '2e' | '3e'>('all')
-
 
   useEffect(() => { const onScroll = () => setScrolled(window.scrollY > 30); window.addEventListener('scroll', onScroll); return () => window.removeEventListener('scroll', onScroll) }, [])
 
@@ -85,99 +82,17 @@ export default function Page() {
     }
   }, [])
 
-  // Keyboard navigation for lightbox
-  useEffect(() => {
-    if (lightboxIndex === null) return
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowRight') setLightboxIndex((prev) => (prev !== null ? (prev + 1) % allEventImages.length : null))
-      else if (e.key === 'ArrowLeft') setLightboxIndex((prev) => (prev !== null ? (prev - 1 + allEventImages.length) % allEventImages.length : null))
-      else if (e.key === 'Escape') setLightboxIndex(null)
-    }
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [lightboxIndex])
-
-  const handleImageClick = (src: string) => {
-    const idx = allEventImages.indexOf(src)
-    if (idx !== -1) setLightboxIndex(idx)
-  }
-
   return <main>
     <header className={`site-header ${scrolled ? 'scrolled' : ''}`}><Logo /><nav>{nav.map(([label, id]) => <a key={id} href={`#${id}`}>{label}</a>)}</nav><Button>Faire un don <Heart size={13} /></Button><button className="menu-toggle" onClick={() => setMenu(!menu)} aria-label={menu ? 'Fermer le menu' : 'Ouvrir le menu'}>{menu ? <X /> : <Menu />}</button></header>
     {menu && <div className="mobile-menu">{nav.map(([label, id]) => <a key={id} href={`#${id}`} onClick={() => setMenu(false)}>{label}</a>)}<Button>Faire un don</Button></div>}
 
-    <section id="accueil" className="hero" style={{ backgroundImage: `linear-gradient(90deg,rgba(5,5,4,.92) 0%,rgba(5,5,4,.5) 48%,rgba(5,5,4,.35)), url('${heroImage}')` }}><div className="hero-shade" /><div className="hero-content"><p className="eyebrow">EPA — ENSEMBLE POUR L'AVENIR</p><h1>Ensemble<br /><em>pour l'avenir.</em></h1><p className="hero-copy">Unis pour l'espoir, la solidarité<br />et le changement.</p><div className="hero-actions"><Button href="#actions">Découvrir nos actions</Button><Button outline href="#editions">Voir nos éditions <Play size={12} fill="currentColor" /></Button></div></div><a href="#histoire" className="scroll-cue">Découvrir EPA <ChevronDown size={18} /></a></section>
+    <section id="accueil" className="hero" style={{ backgroundImage: `linear-gradient(90deg,rgba(5,5,4,.92) 0%,rgba(5,5,4,.5) 48%,rgba(5,5,4,.35)), url('${heroImage}')` }}><div className="hero-shade" /><div className="hero-content"><p className="eyebrow">EPA — ENSEMBLE POUR L'AVENIR</p><h1>Ensemble<br /><em>pour l'avenir.</em></h1><p className="hero-copy">Unis pour l'espoir, la solidarité<br />et le changement.<br /><span style={{ color: 'var(--gold-soft)', fontSize: '15px', display: 'block', marginTop: '10px', fontStyle: 'italic' }}>« Le don de soi pour un avenir meilleur »</span></p><div className="hero-actions"><Button href="#actions">Découvrir nos actions</Button><Button outline href="#editions">Voir nos éditions <Play size={12} fill="currentColor" /></Button></div></div><a href="#histoire" className="scroll-cue">Découvrir EPA <ChevronDown size={18} /></a></section>
 
     <section id="histoire" className="section story reveal"><div className="story-image"><img src={collage} alt="Les bénévoles EPA auprès des communautés" /><div className="image-tag"><Users size={20} /><span>Des jeunes engagés<br /><b>pour un impact réel</b></span></div></div><div className="story-copy"><p className="eyebrow">Qui sommes-nous ?</p><h2>Plus qu'une association.<br /><em>Un mouvement.</em></h2><p>EPA — Ensemble Pour l'Avenir est une organisation humanitaire et apolitique créée en Mars 2024 par un ensemble de jeunes déterminés. Nous agissons concrètement sur le terrain à travers l'organisation de conférences de sensibilisation, de distributions de Ndogou lors du Ramadan, de caravanes solidaires et d'actions d'aide d'urgence pour bâtir un avenir meilleur.</p><div className="values"><div><Heart /><b>Solidarité</b><span>Soutenir les plus démunis et les personnes en grande précarité.</span></div><div><Shield /><b>Dignité</b><span>Aider chacun à retrouver sa vie, sa vie autonome et sa place.</span></div><div><Users /><b>Avenir</b><span>Accompagner et valoriser la jeunesse pour qu'elle croie en son avenir.</span></div></div><Button href="#histoire">Découvrir notre histoire</Button></div></section>
 
     <section id="editions" className="section editions"><div className="section-heading"><p className="eyebrow">Nos éditions</p><h2>Trois éditions. <em>Une même vision.</em></h2></div><div className="edition-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>{editions.map((edition) => <article className="edition-card" key={edition.number}><img src={edition.img} alt={edition.title} /><div className="card-shade" /><div className="edition-info"><span className="edition-number">{edition.number}</span><h3>{edition.title}</h3><p>{edition.desc}</p><a href={`/editions/${edition.number.replace(/^0/, '')}`}>Voir l'édition <ArrowRight size={15} /></a></div></article>)}</div></section>
 
-    <section id="galerie" className="section gallery"><div className="section-heading"><p className="eyebrow">Galerie</p><h2>Des moments qui racontent <em>notre histoire.</em></h2></div>
-      
-      {/* Tabs Selector */}
-      <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', marginBottom: '32px', flexWrap: 'wrap' }}>
-        {[
-          { id: 'all', label: 'Toutes' },
-          { id: '1ere', label: '1ère Édition' },
-          { id: '2e', label: '2e Édition' },
-          { id: '3e', label: '3e Édition' }
-        ].map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id as any)}
-            className={`btn ${activeTab === tab.id ? '' : 'btn-outline'}`}
-            style={{
-              padding: '6px 14px',
-              borderRadius: '20px',
-              cursor: 'pointer',
-              fontSize: '10px',
-              height: '32px'
-            }}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
 
-      {/* Dynamic Gallery Grid */}
-      <div className="gallery-grid-dynamic" style={{ cursor: 'pointer' }}>
-        {(activeTab === 'all' ? allEventImages : activeTab === '1ere' ? firstEditionImages : activeTab === '2e' ? secondEditionImages : thirdEditionImages).map((src, i) => (
-          <div className="gallery-item-dynamic" key={`${src}-${i}`} onClick={() => handleImageClick(src)}>
-            <img src={src} alt="Moment de vie EPA" />
-          </div>
-        ))}
-      </div>
-
-      {/* Lightbox Slider Modal */}
-      {lightboxIndex !== null && (
-        <div className="fixed inset-0 bg-black/95 z-50 flex flex-col items-center justify-center p-4 transition-opacity duration-300">
-          {/* Close Button */}
-          <button onClick={() => setLightboxIndex(null)} className="absolute top-6 right-6 text-white/80 hover:text-gold transition-colors p-2" aria-label="Fermer" style={{ cursor: 'pointer', background: 'none', border: 'none' }}>
-            <X size={32} />
-          </button>
-          
-          {/* Slider Frame */}
-          <div className="relative max-w-[90vw] max-h-[80vh] flex items-center justify-center">
-            {/* Left Control */}
-            <button onClick={(e) => { e.stopPropagation(); setLightboxIndex((prev) => (prev !== null ? (prev - 1 + allEventImages.length) % allEventImages.length : null)) }} className="absolute left-[-20px] md:left-[-70px] text-white/80 hover:text-gold transition-colors p-3" aria-label="Précédent" style={{ cursor: 'pointer', background: 'none', border: 'none' }}>
-              <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            </button>
-            
-            <img src={allEventImages[lightboxIndex]} alt="Galerie EPA" className="max-w-[80vw] max-h-[75vh] object-contain rounded-lg shadow-2xl transition-all duration-300" style={{ border: '1px solid var(--line)', background: '#000' }} />
-            
-            {/* Right Control */}
-            <button onClick={(e) => { e.stopPropagation(); setLightboxIndex((prev) => (prev !== null ? (prev + 1) % allEventImages.length : null)) }} className="absolute right-[-20px] md:right-[-70px] text-white/80 hover:text-gold transition-colors p-3" aria-label="Suivant" style={{ cursor: 'pointer', background: 'none', border: 'none' }}>
-              <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </button>
-          </div>
-          
-          {/* Counters */}
-          <span className="text-white/60 text-sm mt-4 font-mono select-none">
-            {lightboxIndex + 1} / {allEventImages.length}
-          </span>
-        </div>
-      )}
-    </section>
 
     <section id="actions" className="video-feature"><div><p className="eyebrow">EPA en action</p><h2>Revivez l'énergie EPA.</h2><p>Chaque sourire. Chaque rencontre.<br />Chaque action raconte une histoire.</p><button className="btn" onClick={() => setPlayingVideo(true)}>Regarder la vidéo <Play size={13} fill="currentColor" /></button></div><div className="video-card" style={{ cursor: 'pointer' }} onClick={() => setPlayingVideo(true)}>{playingVideo ? <video src={videoSource} controls autoPlay className="w-full h-full object-cover" style={{ width: '100%', height: '100%', display: 'block' }} /> : <><img src={mobileReference} alt="L'équipe EPA réunie" /><PlayButton /><div className="video-bar"><span /><small>Cliquez pour lire</small></div></>}</div></section>
 
@@ -186,7 +101,7 @@ export default function Page() {
     <section className="journey"><div><p className="eyebrow">Notre parcours</p><h2>Un chemin construit ensemble.</h2><div className="timeline">{[['Mars 2024', "Création d’EPA Fondation", 'Naissance d’une idée portée par un ensemble de jeunes déterminés.'], ['Édition 01', 'Premiers pas.', 'Première édition, premières actions, premiers sourires.'], ['Édition 02', 'On grandit.', "Plus d’actions, plus de bénéficiaires, plus d’impact sur le terrain."], ['Demain', 'Encore plus loin.', 'De nouveaux projets, plus d’espoir et un avenir à construire ensemble.']].map(([date, title, text]) => <div className="timeline-item" key={date}><span className="timeline-dot" /><small>{date}</small><b>{title}</b><p>{text}</p></div>)}</div></div><div className="stats">{[['+ 500', 'Bénéficiaires accompagnés'], ['+ 2', 'Éditions réalisées'], ['+ 50', 'Bénévoles engagés'], ['1', 'Seule mission : l’espoir']].map(([n, l]) => <div key={l}><strong>{n}</strong><span>{l}</span></div>)}</div></section>
 
     <section id="rejoindre" className="join" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${joinBackground}')` }}><div className="join-shade" /><div><p className="eyebrow">Rejoignez le mouvement</p><h2>L'avenir ne se construit pas seul.</h2><p>Rejoignez EPA Fondation et devenez acteur du changement.</p><div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}><Button href="/links">Nous rejoindre</Button><div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px' }}><div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}><img src={`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(qrCodeUrl || 'https://epa-fondation-website.vercel.app/links')}`} alt="QR Code EPA Links" style={{ width: '100px', height: '100px', borderRadius: '6px', border: '1.5px solid var(--gold)', background: '#fff', padding: '4px' }} /><span style={{ fontSize: '9px', color: '#ddd', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Nos Réseaux & Contacts</span></div></div></div></div></section>
-    <footer><Logo /><p>EPA — Ensemble Pour l’Avenir est une organisation humanitaire et apolitique créée en Mars 2024 par un ensemble de jeunes déterminés.</p><div><b>Liens rapides</b>{nav.slice(0, 4).map(([label, id]) => <a key={id} href={`#${id}`}>{label}</a>)}</div><div><b>Suivez-nous</b><span className="socials" aria-label="Réseaux sociaux"><a href="https://instagram.com/ensemble_pour_l_avenir?igsi=MW1mdmltZjM2dTA4ZQ%3D%3D" target="_blank" rel="noreferrer" aria-label="EPA Fondation sur Instagram" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '32px', height: '32px', borderRadius: '50%', border: '1px solid var(--line)', color: 'var(--gold)', transition: 'all 0.3s' }} className="hover:bg-[rgba(231,183,68,0.15)] hover:scale-110"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a><a href="https://snapchat.com/t/SWqV3eGj" target="_blank" rel="noreferrer" aria-label="EPA Fondation sur Snapchat" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '32px', height: '32px', borderRadius: '50%', border: '1px solid var(--line)', color: 'var(--gold)', transition: 'all 0.3s' }} className="hover:bg-[rgba(231,183,68,0.15)] hover:scale-110"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .75c-3.15 0-5.7 2.1-5.7 5.25 0 2.22.95 3.32.95 4.35 0 .22-.24.58-.72 1.05-.62.6-1.57 1.48-1.57 2.6 0 1.25.9 2.05 2.15 2.05.58 0 1.34-.2 1.95-.5.7.53 1.76.95 2.94.95 1.18 0 2.24-.42 2.94-.95.6.3 1.37.5 1.95.5 1.25 0 2.15-.8 2.15-2.05 0-1.12-.95-2-1.57-2.6-.48-.47-.72-.83-.72-1.05 0-1.03.95-2.13.95-4.35C17.7 2.85 15.15.75 12 .75zm0 1.5c2.4 0 4.2 1.55 4.2 3.75 0 1.8-.75 2.85-.75 3.75 0 .52.34 1 .84 1.5.6.6 1.41 1.35 1.41 2.1 0 .6-.41.8-1.15.8-.72 0-1.58-.28-2.22-.64-.52-.3-.87-.41-1.33-.41s-.81.11-1.33.41c-.64.36-1.5.64-2.22.64-.74 0-1.15-.2-1.15-.8 0-.75.81-1.5 1.41-2.1.5-.5.84-.98.84-1.5 0-.9-.75-1.95-.75-3.75C7.8 3.8 9.6 2.25 12 2.25z"/></svg></a><a href="https://chat.whatsapp.com/EGCBEVlYRgeEzMeTIxgkwD?mode=ems_copy_t&utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noreferrer" aria-label="Rejoindre EPA Fondation sur WhatsApp" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '32px', height: '32px', borderRadius: '50%', border: '1px solid var(--line)', color: 'var(--gold)', transition: 'all 0.3s' }} className="hover:bg-[rgba(231,183,68,0.15)] hover:scale-110"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.324 5.328 0 11.859 0c3.166.001 6.141 1.233 8.377 3.469 2.235 2.237 3.465 5.212 3.462 8.378-.005 6.525-5.33 11.849-11.86 11.849-.2.001-.4.001-.6 0-2.004-.002-3.992-.519-5.752-1.503L0 24zm6.59-4.846c1.785 1.059 3.528 1.621 5.267 1.623 5.432-.001 9.853-4.42 9.856-9.854.002-2.631-1.02-5.105-2.879-6.965C17.032 2.1 14.562.997 11.932 1.002c-5.435 0-9.855 4.42-9.858 9.855-.001 1.83.483 3.619 1.401 5.219l-1.057 3.86 3.968-1.042c1.55.938 3.125 1.442 4.7 1.445l.502-.005zm10.748-7.39c-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.668.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/></svg></a></span><small>© 2024 EPA Fondation — Tous droits réservés.<br />Réalisé par <a href="https://wockytech.xyz" target="_blank" rel="noreferrer" style={{ color: 'var(--gold)', textDecoration: 'underline' }}>WockyTech</a></small></div></footer>
+    <footer><Logo /><p>EPA — Ensemble Pour l’Avenir est une organisation humanitaire et apolitique créée en Mars 2024 par un ensemble de jeunes déterminés.<br /><span style={{ color: 'var(--gold)', display: 'block', marginTop: '8px', fontStyle: 'italic' }}>« Le don de soi pour un avenir meilleur »</span></p><div><b>Liens rapides</b>{nav.slice(0, 4).map(([label, id]) => <a key={id} href={`#${id}`}>{label}</a>)}</div><div><b>Suivez-nous</b><span className="socials" aria-label="Réseaux sociaux"><a href="https://instagram.com/ensemble_pour_l_avenir?igsi=MW1mdmltZjM2dTA4ZQ%3D%3D" target="_blank" rel="noreferrer" aria-label="EPA Fondation sur Instagram" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '32px', height: '32px', borderRadius: '50%', border: '1px solid var(--line)', color: 'var(--gold)', transition: 'all 0.3s' }} className="hover:bg-[rgba(231,183,68,0.15)] hover:scale-110"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a><a href="https://snapchat.com/t/SWqV3eGj" target="_blank" rel="noreferrer" aria-label="EPA Fondation sur Snapchat" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '32px', height: '32px', borderRadius: '50%', border: '1px solid var(--line)', color: 'var(--gold)', transition: 'all 0.3s' }} className="hover:bg-[rgba(231,183,68,0.15)] hover:scale-110"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .75c-3.15 0-5.7 2.1-5.7 5.25 0 2.22.95 3.32.95 4.35 0 .22-.24.58-.72 1.05-.62.6-1.57 1.48-1.57 2.6 0 1.25.9 2.05 2.15 2.05.58 0 1.34-.2 1.95-.5.7.53 1.76.95 2.94.95 1.18 0 2.24-.42 2.94-.95.6.3 1.37.5 1.95.5 1.25 0 2.15-.8 2.15-2.05 0-1.12-.95-2-1.57-2.6-.48-.47-.72-.83-.72-1.05 0-1.03.95-2.13.95-4.35C17.7 2.85 15.15.75 12 .75zm0 1.5c2.4 0 4.2 1.55 4.2 3.75 0 1.8-.75 2.85-.75 3.75 0 .52.34 1 .84 1.5.6.6 1.41 1.35 1.41 2.1 0 .6-.41.8-1.15.8-.72 0-1.58-.28-2.22-.64-.52-.3-.87-.41-1.33-.41s-.81.11-1.33.41c-.64.36-1.5.64-2.22.64-.74 0-1.15-.2-1.15-.8 0-.75.81-1.5 1.41-2.1.5-.5.84-.98.84-1.5 0-.9-.75-1.95-.75-3.75C7.8 3.8 9.6 2.25 12 2.25z"/></svg></a><a href="https://chat.whatsapp.com/EGCBEVlYRgeEzMeTIxgkwD?mode=ems_copy_t&utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noreferrer" aria-label="Rejoindre EPA Fondation sur WhatsApp" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '32px', height: '32px', borderRadius: '50%', border: '1px solid var(--line)', color: 'var(--gold)', transition: 'all 0.3s' }} className="hover:bg-[rgba(231,183,68,0.15)] hover:scale-110"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.324 5.328 0 11.859 0c3.166.001 6.141 1.233 8.377 3.469 2.235 2.237 3.465 5.212 3.462 8.378-.005 6.525-5.33 11.849-11.86 11.849-.2.001-.4.001-.6 0-2.004-.002-3.992-.519-5.752-1.503L0 24zm6.59-4.846c1.785 1.059 3.528 1.621 5.267 1.623 5.432-.001 9.853-4.42 9.856-9.854.002-2.631-1.02-5.105-2.879-6.965C17.032 2.1 14.562.997 11.932 1.002c-5.435 0-9.855 4.42-9.858 9.855-.001 1.83.483 3.619 1.401 5.219l-1.057 3.86 3.968-1.042c1.55.938 3.125 1.442 4.7 1.445l.502-.005zm10.748-7.39c-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.668.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/></svg></a></span><small>© 2024 EPA Fondation — Tous droits réservés.<br />Réalisé par <a href="https://wockytech.xyz" target="_blank" rel="noreferrer" style={{ color: 'var(--gold)', textDecoration: 'underline' }}>WockyTech</a></small></div></footer>
     <Chatbot />
   </main>
 }

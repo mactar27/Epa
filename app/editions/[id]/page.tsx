@@ -70,7 +70,7 @@ const editionsData = {
     subtitle: 'Nouveaux horizons de solidarité',
     desc: 'Une édition majeure axée sur la pérennisation des projets solidaires, l\'accompagnement continu des familles démunies et le développement d\'initiatives éducatives pour la jeunesse.',
     images: thirdEditionImages,
-    video: null,
+    video: '/3e-edition/75ea2f0a-2607-44b8-9864-b82e4130f0f0%202.MP4',
     cover: '/3e-edition/161d4365-a5a8-42f2-9f96-b222cd6c0dec.JPG'
   }
 }
