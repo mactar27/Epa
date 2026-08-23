@@ -13,75 +13,56 @@ const videoSource = '/8f4e66e4-9a44-4dad-a773-83da81133836.MP4'
 
 const nav = [['Accueil', 'accueil'], ['Notre histoire', 'histoire'], ['Nos éditions', 'editions'], ['Nos actions', 'actions'], ['Galerie', 'galerie'], ['Nous rejoindre', 'rejoindre']]
 
+const firstEditionImages = [
+  '/1ere-edition/4c2c4575-98a8-4cfe-983d-47759f26599e.JPG',
+  '/1ere-edition/8c0549a9-e14d-4fcc-95ed-6e1a17a64b26.JPG',
+  '/1ere-edition/a9322bd8-f043-44e5-982a-e3218f4c21fc.JPG',
+  '/1ere-edition/b809c5ea-530b-4b8f-8579-2de22e827517.JPG'
+]
+
+const secondEditionImages = [
+  '/2e-edition/54634140-05f0-432f-9165-229043da4425.JPG',
+  '/2e-edition/68b20ab8-7c80-4f10-8eed-53ccf3e8fcf6.JPG',
+  '/2e-edition/6b06caab-27f5-44e2-91ba-abf850ece36a.JPG',
+  '/2e-edition/b14b21d3-624f-4bb6-bd03-f09cd55f3b84.JPG',
+  '/2e-edition/e69125fd-ccb4-452d-9018-9f7a363c8c16.JPG',
+  '/2e-edition/ed994477-ce33-4da2-aaf4-5f41e2e5cd12.JPG'
+]
+
+const thirdEditionImages = [
+  '/3e-edition/161d4365-a5a8-42f2-9f96-b222cd6c0dec.JPG',
+  '/3e-edition/189eb177-38a8-481c-8862-5e95f9bc48c9.JPG',
+  '/3e-edition/18ede151-0f76-456a-90d6-dc4fde8414b4.JPG',
+  '/3e-edition/32f76a8f-34a6-4c32-be70-a4d15403d7c8.JPG',
+  '/3e-edition/3700a882-d7f4-4f14-98a3-1a147411b748.JPG',
+  '/3e-edition/422dd75a-8540-4d46-bf9d-5685aa117a99.JPG',
+  '/3e-edition/47db4e31-c2f4-4692-b419-2bbfb93f0101.JPG',
+  '/3e-edition/4e14af8c-cf56-4dfd-aa60-362156f97724.JPG',
+  '/3e-edition/6c32504d-55b9-467c-839d-81d82ee7a7eb.JPG',
+  '/3e-edition/75456b11-5dcb-462c-9224-3b265a56ca8d.JPG',
+  '/3e-edition/7e47cedb-6265-4b96-b7ef-c910f0db935d.JPG',
+  '/3e-edition/8f7a94cd-5814-47a4-b326-c53f2b166e81.JPG',
+  '/3e-edition/a858cd0f-da25-491d-b72e-b468b5e75846.JPG',
+  '/3e-edition/a9e1609e-9edf-43b2-89db-31eb954f3286.JPG',
+  '/3e-edition/c473fede-dc7f-4575-ad39-f030538a634d.JPG',
+  '/3e-edition/c4bea624-8ab6-4125-bc02-82e20465ad74.JPG',
+  '/3e-edition/c89dbfd0-22c3-4348-85f2-46550eb94d46.JPG',
+  '/3e-edition/d3ebda1c-3097-486d-98a1-cf440347795b.JPG',
+  '/3e-edition/d7bfaf76-2daa-4c50-9fcb-f2f9de3c12fe.JPG',
+  '/3e-edition/e377b068-44cd-416f-a5fc-5776ac591469.JPG',
+  '/3e-edition/e78062bf-daa6-45e3-b4a5-88e493fdadf6.JPG',
+  '/3e-edition/ebeed230-5988-4c47-b621-e2c851224483.JPG',
+  '/3e-edition/f17f9a30-8571-4e33-8115-0014a1ee8eae.JPG',
+  '/3e-edition/f240036d-2624-4243-b56a-e5a2df829129.JPG'
+]
+
 const editions = [
-  { number: '01', title: 'Première édition', desc: 'Là où tout a commencé.', img: '/7bda3c41-7287-4d2a-ac1e-2ab4477c6d9e.JPG' },
-  { number: '02', title: 'Deuxième édition', desc: "Plus de partage. Plus d'impact. Plus loin ensemble.", img: '/89bbb2b2-f76a-44e5-a8aa-431c6aace63d.JPG' }
+  { number: '01', title: 'Première édition', desc: 'Là où tout a commencé.', img: '/1ere-edition/8c0549a9-e14d-4fcc-95ed-6e1a17a64b26.JPG' },
+  { number: '02', title: 'Deuxième édition', desc: "Plus de partage. Plus d'impact. Plus loin ensemble.", img: '/2e-edition/54634140-05f0-432f-9165-229043da4425.JPG' },
+  { number: '03', title: 'Troisième édition', desc: "Caravanes de solidarité, distribution élargie et projets d'avenir.", img: '/3e-edition/161d4365-a5a8-42f2-9f96-b222cd6c0dec.JPG' }
 ]
 
-const gallery = [
-  '/0e8386b7-4b92-493b-9836-eb664e3afbf7.JPG',
-  '/6b55e4d8-2b6f-4010-b822-3e93a93b10c7.JPG',
-  '/6c740b82-df62-4be1-99ad-bc2cabd3d891.JPG',
-  '/bf7f3c65-8096-455a-89d5-c599eb1c313a.JPG',
-  '/fd0a367d-16ce-463b-a055-9bd140de386b.JPG',
-  '/f0141fec-8e76-41f4-b4ce-9cd516db2994.JPG'
-]
-
-// All 52 event images from public/
-const allEventImages = [
-  '/095c1f9a-2beb-428a-8ca6-853cd298bfd4%202.JPG',
-  '/0ad088f5-1be0-41d7-942c-5221088e3196.JPG',
-  '/0b0f2851-9eb1-4ff2-b253-fb1110ef96d2%202.JPG',
-  '/0e8386b7-4b92-493b-9836-eb664e3afbf7.JPG',
-  '/105a7b40-8e43-48ec-b4ae-cfee8fdbbdea.JPG',
-  '/11119b44-7642-483b-9c70-33b9282fb199.JPG',
-  '/1446323d-a9d4-46c4-bf1d-1c2728fa5921.JPG',
-  '/17bd350a-37ba-4d06-8494-9abedbb3135a%202.JPG',
-  '/18e45b65-fddb-4100-9766-95cdccae0e58.JPG',
-  '/1a29f1af-2069-4fd3-8e95-c8d714c48a34.JPG',
-  '/1ab4dab2-9494-4b4d-ae17-e13df19f43a8.JPG',
-  '/296351a2-b836-4ca5-a621-36c27b2e91a7%202.JPG',
-  '/29f0c4c3-4754-42b2-88ea-df6646f95215%202.JPG',
-  '/328e4581-c264-47db-bff8-8bc1b6cbff56.JPG',
-  '/3579b4e9-cc43-428c-8d1e-f3b13193aa53.JPG',
-  '/3fc61b31-71a9-47a3-b522-95b3fce38c23%202.JPG',
-  '/434a601a-4068-4f10-8058-c7421ca177d8%202.JPG',
-  '/4b67d476-8bfc-4152-899d-d07e92edcaf2.JPG',
-  '/4d8ae60a-6236-4343-92db-e1fd80913e6b.JPG',
-  '/6450d2c1-8b92-441f-8797-369b45a32a39.JPG',
-  '/6b55e4d8-2b6f-4010-b822-3e93a93b10c7.JPG',
-  '/6c740b82-df62-4be1-99ad-bc2cabd3d891.JPG',
-  '/7131385a-9aaa-4bd0-894e-c7881c924710.JPG',
-  '/74dab822-f4cc-4a17-ae23-437ecd0d111a.JPG',
-  '/77016bc5-e0ab-465d-a2c5-8f6084d16694%202.JPG',
-  '/7bda3c41-7287-4d2a-ac1e-2ab4477c6d9e.JPG',
-  '/80900005-8987-441c-9ac7-9656455481aa.JPG',
-  '/8104d95e-56f3-4632-9235-bd328228438c.JPG',
-  '/87150aa9-b5c5-4a17-b887-6036b90a1f46%202.JPG',
-  '/89bbb2b2-f76a-44e5-a8aa-431c6aace63d.JPG',
-  '/964d608f-37d8-4e66-a42e-b7560010a326%202.JPG',
-  '/96f51a96-482f-43e1-8791-bbf2488abdc6.JPG',
-  '/9a5df270-556c-41ad-bac4-4898314b9779.JPG',
-  '/9fa74156-7b02-4822-a934-f111aca0da21.JPG',
-  '/a638f069-3e81-49c4-9217-bffbfe6f0e47.JPG',
-  '/a7041992-442f-46a8-974e-ced109461d48.JPG',
-  '/ad3d2484-b577-41ea-a9df-6cdbe58edc74.JPG',
-  '/b8bfd3c2-4e97-4deb-85cb-df90a62a7902%202.JPG',
-  '/bc8d7185-c647-4733-815b-57264cd2314f.JPG',
-  '/be11bedf-9297-425a-a9f0-0b9069dcea48%202.JPG',
-  '/bf7f3c65-8096-455a-89d5-c599eb1c313a.JPG',
-  '/c5132e60-406f-4a93-9247-d009147bb520%202.JPG',
-  '/c885787d-c5b2-4bb1-b590-323d30aa374c%202.JPG',
-  '/defabd9e-d277-4a85-b7a8-ec281e073f85.JPG',
-  '/e628ec73-c696-474d-840f-4922c805f309.JPG',
-  '/e7f7c737-8736-4468-952b-9ca561705a2a.JPG',
-  '/ea3035ba-8fc5-4705-8840-e976f16fdf1b.JPG',
-  '/edb8da60-942e-496d-ba9f-a9a9a89a6499.JPG',
-  '/f0141fec-8e76-41f4-b4ce-9cd516db2994.JPG',
-  '/f4b65753-759c-4354-a47b-4650de3ed61a%202.JPG',
-  '/f9a10d85-9f31-4d3f-99ee-495c9d5c23d8.JPG',
-  '/fd0a367d-16ce-463b-a055-9bd140de386b.JPG'
-]
+const allEventImages = [...firstEditionImages, ...secondEditionImages, ...thirdEditionImages]
 
 function Logo() { return <div className="logo" aria-label="EPA Fondation"><img src="/epa-logo.jpeg" alt="EPA Fondation" /></div> }
 function Button({ children, outline = false, href = "#rejoindre" }: { children: React.ReactNode; outline?: boolean; href?: string }) { return <a className={`btn ${outline ? 'btn-outline' : ''}`} href={href}>{children}<ArrowRight size={15} /></a> }
@@ -93,6 +74,12 @@ export default function Page() {
   const [playingVideo, setPlayingVideo] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
   const [qrCodeUrl, setQrCodeUrl] = useState('')
+  const [activeTab, setActiveTab] = useState<'all' | '1ere' | '2e' | '3e'>('all')
+  const [imagesLimit, setImagesLimit] = useState(12)
+
+  useEffect(() => {
+    setImagesLimit(12)
+  }, [activeTab])
 
   useEffect(() => { const onScroll = () => setScrolled(window.scrollY > 30); window.addEventListener('scroll', onScroll); return () => window.removeEventListener('scroll', onScroll) }, [])
 
@@ -127,22 +114,51 @@ export default function Page() {
 
     <section id="histoire" className="section story reveal"><div className="story-image"><img src={collage} alt="Les bénévoles EPA auprès des communautés" /><div className="image-tag"><Users size={20} /><span>Des jeunes engagés<br /><b>pour un impact réel</b></span></div></div><div className="story-copy"><p className="eyebrow">Qui sommes-nous ?</p><h2>Plus qu'une association.<br /><em>Un mouvement.</em></h2><p>EPA — Ensemble Pour l'Avenir est une organisation humanitaire et apolitique créée en Mars 2024 par un ensemble de jeunes déterminés. Nous agissons concrètement sur le terrain à travers l'organisation de conférences de sensibilisation, de distributions de Ndogou lors du Ramadan, de caravanes solidaires et d'actions d'aide d'urgence pour bâtir un avenir meilleur.</p><div className="values"><div><Heart /><b>Solidarité</b><span>Soutenir les plus démunis et les personnes en grande précarité.</span></div><div><Shield /><b>Dignité</b><span>Aider chacun à retrouver sa vie, sa vie autonome et sa place.</span></div><div><Users /><b>Avenir</b><span>Accompagner et valoriser la jeunesse pour qu'elle croie en son avenir.</span></div></div><Button href="#histoire">Découvrir notre histoire</Button></div></section>
 
-    <section id="editions" className="section editions"><div className="section-heading"><p className="eyebrow">Nos éditions</p><h2>Deux éditions. <em>Une même vision.</em></h2></div><div className="edition-grid">{editions.map((edition) => <article className="edition-card" key={edition.number}><img src={edition.img} alt={edition.title} /><div className="card-shade" /><div className="edition-info"><span className="edition-number">{edition.number}</span><h3>{edition.title}</h3><p>{edition.desc}</p><a href="#galerie">Voir l'édition <ArrowRight size={15} /></a></div></article>)}</div></section>
+    <section id="editions" className="section editions"><div className="section-heading"><p className="eyebrow">Nos éditions</p><h2>Trois éditions. <em>Une même vision.</em></h2></div><div className="edition-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>{editions.map((edition) => <article className="edition-card" key={edition.number}><img src={edition.img} alt={edition.title} /><div className="card-shade" /><div className="edition-info"><span className="edition-number">{edition.number}</span><h3>{edition.title}</h3><p>{edition.desc}</p><a href="#galerie">Voir l'édition <ArrowRight size={15} /></a></div></article>)}</div></section>
 
     <section id="galerie" className="section gallery"><div className="section-heading"><p className="eyebrow">Galerie</p><h2>Des moments qui racontent <em>notre histoire.</em></h2></div>
-      <div className="gallery-grid" style={{ cursor: 'pointer' }}>
-        {gallery.map((src, i) => (
-          <div className={`gallery-item item-${i}`} key={`${src}-${i}`} onClick={() => handleImageClick(src)}>
+      
+      {/* Tabs Selector */}
+      <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', marginBottom: '32px', flexWrap: 'wrap' }}>
+        {[
+          { id: 'all', label: 'Toutes' },
+          { id: '1ere', label: '1ère Édition' },
+          { id: '2e', label: '2e Édition' },
+          { id: '3e', label: '3e Édition' }
+        ].map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id as any)}
+            className={`btn ${activeTab === tab.id ? '' : 'btn-outline'}`}
+            style={{
+              padding: '6px 14px',
+              borderRadius: '20px',
+              cursor: 'pointer',
+              fontSize: '10px',
+              height: '32px'
+            }}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Dynamic Gallery Grid */}
+      <div className="gallery-grid-dynamic" style={{ cursor: 'pointer' }}>
+        {(activeTab === 'all' ? allEventImages : activeTab === '1ere' ? firstEditionImages : activeTab === '2e' ? secondEditionImages : thirdEditionImages).slice(0, imagesLimit).map((src, i) => (
+          <div className="gallery-item-dynamic" key={`${src}-${i}`} onClick={() => handleImageClick(src)}>
             <img src={src} alt="Moment de vie EPA" />
-            {i === 2 && <span className="gallery-label">ÉDITION 01</span>}
           </div>
         ))}
       </div>
-      <div className="center">
-        <button className="btn" onClick={() => setLightboxIndex(0)}>
-          Voir toute la galerie ({allEventImages.length} photos) <Grid3X3 size={14} />
-        </button>
-      </div>
+
+      {(activeTab === 'all' ? allEventImages : activeTab === '1ere' ? firstEditionImages : activeTab === '2e' ? secondEditionImages : thirdEditionImages).length > imagesLimit && (
+        <div className="center" style={{ marginTop: '24px' }}>
+          <button className="btn" onClick={() => setImagesLimit((prev) => prev + 12)}>
+            Voir plus de photos <Grid3X3 size={14} />
+          </button>
+        </div>
+      )}
 
       {/* Lightbox Slider Modal */}
       {lightboxIndex !== null && (
