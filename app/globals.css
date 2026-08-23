@@ -179,3 +179,25 @@ footer b { color:var(--gold); font-size:9px; text-transform:uppercase; }
   html { scroll-behavior:auto; }
   * { transition:none!important; }
 }
+
+/* Chatbot Styles */
+.dot-typing {
+  animation: pulse 1.2s infinite ease-in-out;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(0.6); opacity: 0.6; }
+  50% { transform: scale(1); opacity: 1; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 800px) {
+  .chatbot-window-responsive {
+    right: 16px !important;
+    left: 16px !important;
+    width: auto !important;
+    bottom: 80px !important;
+    height: 440px !important;
+  }
+}
