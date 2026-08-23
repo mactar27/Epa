@@ -50,7 +50,7 @@ export default function Chatbot() {
         case 'Qui sommes-nous ?':
           botResponse = {
             sender: 'bot',
-            text: 'EPA (Ensemble Pour l\'Avenir) est une organisation humanitaire et apolitique créée en Mars 2024 au Sénégal. Notre but est d\'apporter du soutien, de la force et des opportunités aux personnes démunies, tout en mobilisant la jeunesse pour bâtir un avenir solidaire.',
+            text: 'EPA (Ensemble Pour l\'Avenir) est une organisation humanitaire et apolitique créée en Mars 2024 au Sénégal. Portée par des jeunes engagés, nous agissons concrètement à travers l\'organisation de conférences éducatives, de caravanes solidaires et d\'actions fortes comme les distributions de Ndogou pendant le Ramadan pour soutenir les personnes en situation de précarité.',
           }
           break
         case 'Devenir bénévole':
