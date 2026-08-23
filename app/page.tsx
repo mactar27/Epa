@@ -75,11 +75,7 @@ export default function Page() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
   const [qrCodeUrl, setQrCodeUrl] = useState('')
   const [activeTab, setActiveTab] = useState<'all' | '1ere' | '2e' | '3e'>('all')
-  const [imagesLimit, setImagesLimit] = useState(12)
 
-  useEffect(() => {
-    setImagesLimit(12)
-  }, [activeTab])
 
   useEffect(() => { const onScroll = () => setScrolled(window.scrollY > 30); window.addEventListener('scroll', onScroll); return () => window.removeEventListener('scroll', onScroll) }, [])
 
@@ -145,20 +141,12 @@ export default function Page() {
 
       {/* Dynamic Gallery Grid */}
       <div className="gallery-grid-dynamic" style={{ cursor: 'pointer' }}>
-        {(activeTab === 'all' ? allEventImages : activeTab === '1ere' ? firstEditionImages : activeTab === '2e' ? secondEditionImages : thirdEditionImages).slice(0, imagesLimit).map((src, i) => (
+        {(activeTab === 'all' ? allEventImages : activeTab === '1ere' ? firstEditionImages : activeTab === '2e' ? secondEditionImages : thirdEditionImages).map((src, i) => (
           <div className="gallery-item-dynamic" key={`${src}-${i}`} onClick={() => handleImageClick(src)}>
             <img src={src} alt="Moment de vie EPA" />
           </div>
         ))}
       </div>
-
-      {(activeTab === 'all' ? allEventImages : activeTab === '1ere' ? firstEditionImages : activeTab === '2e' ? secondEditionImages : thirdEditionImages).length > imagesLimit && (
-        <div className="center" style={{ marginTop: '24px' }}>
-          <button className="btn" onClick={() => setImagesLimit((prev) => prev + 12)}>
-            Voir plus de photos <Grid3X3 size={14} />
-          </button>
-        </div>
-      )}
 
       {/* Lightbox Slider Modal */}
       {lightboxIndex !== null && (
