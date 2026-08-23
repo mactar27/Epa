@@ -286,7 +286,7 @@ export default function EditionDetailPage() {
 
       {/* Footer */}
       <footer style={{ padding: '40px clamp(24px, 6vw, 92px) 0', borderTop: '1px solid rgba(179,134,27,0.15)', textAlign: 'center', marginTop: '60px' }}>
-        <p style={{ fontSize: '11px', color: '#666', margin: 0 }}>
+        <p style={{ fontSize: '13px', color: '#666', margin: 0 }}>
           © {new Date().getFullYear()} EPA Fondation — Tous droits réservés.<br />
           Réalisé par <a href="https://wockytech.xyz" target="_blank" rel="noreferrer" style={{ color: '#b3861b', textDecoration: 'underline' }}>WockyTech</a>
         </p>
