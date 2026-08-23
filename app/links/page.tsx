@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ArrowRight, Copy, Globe, Instagram, MessageCircle, Phone } from 'lucide-react'
+import { ArrowRight, Copy, Globe, MessageCircle, Phone } from 'lucide-react'
 
 export default function LinksPage() {
   const [copied, setCopied] = useState(false)
@@ -23,7 +23,13 @@ export default function LinksPage() {
     {
       title: 'Nous suivre sur Instagram',
       url: 'https://instagram.com/ensemble_pour_l_avenir?igsi=MW1mdmltZjM2dTA4ZQ%3D%3D',
-      icon: <Instagram size={20} />,
+      icon: (
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      ),
       bg: '#E1306C',
       color: '#fff',
     },
