@@ -77,8 +77,8 @@ export default function Page() {
   const [fadeOut, setFadeOut] = useState(false)
 
   useEffect(() => {
-    const timerFade = setTimeout(() => setFadeOut(true), 1000)
-    const timerRemove = setTimeout(() => setShowSplash(false), 1600)
+    const timerFade = setTimeout(() => setFadeOut(true), 2400)
+    const timerRemove = setTimeout(() => setShowSplash(false), 3000)
     return () => {
       clearTimeout(timerFade)
       clearTimeout(timerRemove)
