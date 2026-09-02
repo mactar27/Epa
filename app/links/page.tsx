@@ -6,8 +6,8 @@ import { ArrowRight, Copy, Globe, MessageCircle, Phone } from 'lucide-react'
 export default function LinksPage() {
   const [copied, setCopied] = useState(false)
 
-  const copyNumber = () => {
-    navigator.clipboard.writeText('778406655')
+  const copyDonationNumber = () => {
+    navigator.clipboard.writeText('778406665')
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
@@ -45,8 +45,9 @@ export default function LinksPage() {
       color: '#000',
     },
     {
-      title: 'Nous appeler (77 840 66 55)',
-      url: 'tel:+221778406655',
+      id: 'phone',
+      title: 'Nous appeler (77 840 66 65)',
+      url: 'tel:+221778406665',
       icon: <Phone size={20} />,
       bg: '#b3861b',
       color: '#fff',
@@ -82,7 +83,7 @@ export default function LinksPage() {
         <div className="w-full flex flex-col gap-4" style={{ width: '100%' }}>
           {/* Custom Wave / OM Donation Button */}
           <button
-            onClick={copyNumber}
+            onClick={copyDonationNumber}
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -105,8 +106,8 @@ export default function LinksPage() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
               <Copy size={20} />
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                <span style={{ fontSize: '14px' }}>Dons Wave / Orange Money</span>
-                <span style={{ fontSize: '11px', fontWeight: 'normal', opacity: 0.9 }}>Copier le numéro : 77 840 66 55</span>
+                <span style={{ fontSize: '14px' }}>{copied ? 'Numéro copié !' : 'Faire un don (Wave/Orange Money)'}</span>
+                <span style={{ fontSize: '11px', fontWeight: 'normal', opacity: 0.9 }}>Copier le numéro : 77 840 66 65</span>
               </div>
             </div>
             <span style={{ fontSize: '11px', background: 'rgba(255,255,255,0.2)', padding: '4px 8px', borderRadius: '6px' }}>

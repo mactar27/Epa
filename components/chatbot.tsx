@@ -32,7 +32,7 @@ export default function Chatbot() {
   }, [messages, isTyping, isOpen])
 
   const copyDonationNumber = () => {
-    navigator.clipboard.writeText('778406655')
+    navigator.clipboard.writeText('778406665')
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
@@ -63,7 +63,7 @@ export default function Chatbot() {
         case 'Faire un don (Wave/OM)':
           botResponse = {
             sender: 'bot',
-            text: 'Merci pour votre générosité ! ❤️ Chaque don aide à financer nos actions. Vous pouvez effectuer votre transfert (Wave ou Orange Money) directement vers le numéro 77 840 66 55.',
+            text: 'Merci pour votre générosité ! ❤️ Chaque don aide à financer nos actions. Vous pouvez effectuer votre transfert (Wave ou Orange Money) directement vers le numéro 77 840 66 65.',
             actionType: 'donation',
           }
           break
@@ -277,7 +277,7 @@ export default function Chatbot() {
                   {msg.actionType === 'contact' && (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '12px' }}>
                       <a
-                        href="tel:+221778406655"
+                        href="tel:+221778406665"
                         style={{
                           display: 'flex',
                           alignItems: 'center',
@@ -293,7 +293,7 @@ export default function Chatbot() {
                           textDecoration: 'none',
                         }}
                       >
-                        <Phone size={14} /> Nous appeler (77 840 66 55)
+                        <Phone size={14} /> Nous appeler (77 840 66 65)
                       </a>
                       <a
                         href="https://instagram.com/ensemble_pour_l_avenir?igsi=MW1mdmltZjM2dTA4ZQ%3D%3D"
